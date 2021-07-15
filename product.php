@@ -33,8 +33,7 @@
 									<div class="product__body">
 										<div class="product__tab">Description</div><!-- /.product__tab -->
 
-										<p>An everyday chain textured to catch the light. Wear alone or stack up with your favourites.
-49 solid links, adjustable up to 45cm</p>
+										<p>An everyday chain textured to catch the light. Wear alone or stack up with your favourites. 49 solid links, adjustable up to 45cm</p>
 									</div><!-- /.product__body -->
 								</div><!-- /.form__body -->
 

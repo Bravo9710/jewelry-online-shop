@@ -7,7 +7,43 @@
 		<div class="shell">
 			<div class="login">
 				<div class="form">
-					<form action="?" method="post">
+					<form action="php/registration_submit.php" method="post">
+						<?php
+							$firstname      = "";
+							$lastname       = "";
+							$user_password  = "";
+							$user_password2 = "";
+							$email          = "";
+							$user_address   = "";
+
+							if(isset($_GET['error'])){
+								if($_GET['error'] == "emailtaken"){
+									echo '
+										<div class="alert alert-danger" role="alert">
+											Имейлът вече е зает!
+										</div>';
+								}
+								else if ($_GET['error'] == "pwdCheck"){
+									echo '
+										<div class="alert alert-danger" role="alert">
+											Паролите не съвпадат!
+										</div>';
+								}
+								else if ($_GET['error'] == "sqlError"){
+									echo '
+										<div class="alert alert-danger" role="alert">
+											Няма връзка с базата данни!
+										</div>';
+								}
+
+							} else if (isset($_GET['register']) && $_GET['register'] == "complete"){
+								echo '
+									<div class="alert alert-danger" role="alert">
+										Успешна регистрация!
+									</div>';
+							}
+						?>
+
 						<div class="form__controls">
 							<label for="name">Name*</label>
 							<input type="text" name="name" class="form-control" id="name" required>
@@ -30,7 +66,7 @@
 
 						<div class="form__controls">
 							<label for="email">Email*</label>
-							<input type="email" name="email" class="form-control" id="email" required>
+							<input type="email" name="email" class="form-control" value="<?php echo "$email" ?>" id="email" required>
 						</div><!-- /.form__controls -->
 
 						<div class="form__controls">
@@ -38,7 +74,7 @@
 							<input type="text" name="address" class="form-control" id="address" required>
 						</div><!-- /.form__controls -->
 
-						<button type="submit" name="login-submit" class="btn">Register</button>
+						<button type="submit" name="submit" class="btn">Register</button>
 
 						<br>
 

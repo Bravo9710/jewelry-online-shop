@@ -39,7 +39,7 @@
 							
 							<h2 class="category__title">Rings</h2><!-- /.category__title -->
 
-							<a href="#"></a>
+							<a href="rings.php"></a>
 						</div><!-- /.category -->
 					</li>
 					
