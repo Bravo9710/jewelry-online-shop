@@ -10,7 +10,7 @@
 					<li>
 						<div class="category">
 							<div class="category__image">
-								<img src="assets/images/ring.jpg" alt="" width="1500" height="1500">
+								<img src="assets/images/necklaces main.jpg" alt="" width="1500" height="1500">
 							</div><!-- /.category__image -->
 							
 							<h2 class="category__title">Necklaces</h2><!-- /.category__title -->
@@ -22,7 +22,7 @@
 					<li>
 						<div class="category">
 							<div class="category__image">
-								<img src="assets/images/ring.jpg" alt="">
+								<img src="assets/images/bracelets main.jpg" alt="">
 							</div><!-- /.category__image -->
 							
 							<h2 class="category__title">Bracelets</h2><!-- /.category__title -->
@@ -34,7 +34,7 @@
 					<li>
 						<div class="category">
 							<div class="category__image">
-								<img src="assets/images/ring.jpg" alt="">
+								<img src="assets/images/rings main.jpg" alt="">
 							</div><!-- /.category__image -->
 							
 							<h2 class="category__title">Rings</h2><!-- /.category__title -->
@@ -46,7 +46,7 @@
 					<li>
 						<div class="category">
 							<div class="category__image">
-								<img src="assets/images/ring.jpg" alt="">
+								<img src="assets/images/earings main.jpg" alt="">
 							</div><!-- /.category__image -->
 							
 							<h2 class="category__title">Earings</h2><!-- /.category__title -->

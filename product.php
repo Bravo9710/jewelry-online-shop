@@ -8,11 +8,11 @@
 			<div class="product-full">
 				<div class="product__head">
 					<div class="product__image">
-						<img src="assets/images/ring.jpg" alt="">
+						<img src="assets/images/necklace 1-gold.jpg" alt="">
 					</div><!-- /.product__image -->
 
 					<div class="product__content">
-						<h1 class="product__title">Dancho gei</h1><!-- /.product__title -->
+						<h1 class="product__title">Alta Textured Chain Necklace</h1><!-- /.product__title -->
 
 						<div class="form-product">
 							<form action="?" method="post">
@@ -33,7 +33,8 @@
 									<div class="product__body">
 										<div class="product__tab">Description</div><!-- /.product__tab -->
 
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur ut tempore et laboriosam cupiditate ducimus, eveniet quae dicta dolorum porro, minus id blanditiis repellat inventore dolor tempora quasi omnis, laborum.</p>
+										<p>An everyday chain textured to catch the light. Wear alone or stack up with your favourites.
+49 solid links, adjustable up to 45cm</p>
 									</div><!-- /.product__body -->
 								</div><!-- /.form__body -->
 
