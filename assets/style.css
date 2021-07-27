@@ -141,6 +141,23 @@ table {
 	transition: opacity .4s;
 }
 
+.nav p {
+	font-weight: 700; 
+}
+
+.nav .nav-signout {
+	border: none; 
+	background: none; 
+	font-weight: 700; 
+	font-size: 20px; 
+	cursor: pointer;
+	transition: opacity .4s; 
+}
+
+.nav .nav-signout:hover {
+	opacity: .7; 
+}
+
 .nav a:hover {
 	opacity: .7; 
 }

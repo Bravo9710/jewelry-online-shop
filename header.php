@@ -1,3 +1,8 @@
+<?php
+	session_start();
+	include 'php/database_connect.php';
+?>
+
 <header class="header">
 	<div class="shell">
 		<div class="header__inner">
@@ -10,17 +15,40 @@
 					<li>
 						<a href="index.php">Home</a>
 					</li>
-					
-					<li>
-						<a href="signin-page.php">Sign In</a>
-					</li>
+
+					<?php 
+						if(isset($_SESSION['userid'])){
+							$userid = $_SESSION['userid'];
+							$sqlQuery ="SELECT firstname, lastname FROM users WHERE id='$userid'";
+							$result = mysqli_query($databaseConnect, $sqlQuery);
+							$row = mysqli_fetch_assoc($result);
+							$firstname = $row["firstname"];
+							$lastname = $row["lastname"];
+							echo '<li><p>'. $firstname. ' ' .$lastname. '</p></li>';
+
+						} else {
+							echo '<li>
+									<a href="signin-page.php">Sign In</a>
+								</li>';
+						}
+					?>
 
 					<li>
 						<a href="signin-page.php">
 							<i class="fas fa-cart-plus"></i>
-							(2)
+							(0)
 						</a>
 					</li>
+
+					<?php 
+						if(isset($_SESSION['userid'])){
+							echo '<li>
+									<form action="php/logout_code.php" method="POST">
+										<button type="submit" name="logout-submit" class="nav-signout">Sign out</button>
+									</form>
+								</li>';
+						}
+					?>
 				</ul>
 			</nav><!-- /.nav -->
 		</div><!-- /.header__inner -->

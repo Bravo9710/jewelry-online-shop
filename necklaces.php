@@ -16,9 +16,7 @@
 							<div class="product__body">
 								<h2 class="product__title">Alta Textured Chain Necklace</h2><!-- /.product__title -->
 								
-								<p>An everyday chain textured to catch the light. Wear alone or stack up with your favourites.
-49 solid links, adjustable up to 45cm
-</p>
+								<p>An everyday chain textured to catch the light. Wear alone or stack up with your favourites. 49 solid links, adjustable up to 45cm</p>
 								
 								<span>20лв</span>
 							</div><!-- /.product__body -->

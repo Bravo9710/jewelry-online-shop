@@ -17,44 +17,44 @@
 		
 		else {
 			//Проверка за вече съществуващ email
-			$sql = "SELECT email FROM users WHERE email=?"; // ?(place holder) for security(Prepare statements)
-			$stmt = mysqli_stmt_init($databaseConnect);
-			if (!mysqli_stmt_prepare($stmt, $sql)){ //Проверка за гешка в заявката
+			$sqlQuery = "SELECT email FROM users WHERE email=?"; // ?(place holder) for security(Prepare statements)
+			$statement = mysqli_stmt_init($databaseConnect);
+			if (!mysqli_stmt_prepare($statement, $sqlQuery)){ //Проверка за гешка в заявката
 				header("location: ../register-page.php?error=sqlError");
 				exit();
 			}
 			else {
-				mysqli_stmt_bind_param($stmt, "s", $email); //Взима данните от потребителя и ги задава към $stmt
-				mysqli_stmt_execute($stmt); //execute $stmt to database
-				mysqli_stmt_store_result($stmt); //get result from database and store it in $stmt 
-				$resultCheck = mysqli_stmt_num_rows($stmt); //Проверява колко съвпадения има на записа 
+				mysqli_stmt_bind_param($statement, "s", $email); //Взима данните от потребителя и ги задава към $statement
+				mysqli_stmt_execute($statement); //execute $statement to database
+				mysqli_stmt_store_result($statement); //get result from database and store it in $statement 
+				$resultCheck = mysqli_stmt_num_rows($statement); //Проверява колко съвпадения има на записа 
 				
 				if ($resultCheck > 0) {
 					header("location: ../register-page.php?error=emailtaken&mail=");
 					exit();
 				}
 				else {
-					$sql= "INSERT INTO users (email, firstname, lastname, password, address)
+					$sqlQuery= "INSERT INTO users (email, firstname, lastname, password, address)
 							VALUES (?, ?, ?, ?, ?)";
-					$stmt = mysqli_stmt_init($databaseConnect);
+					$statement = mysqli_stmt_init($databaseConnect);
 
-					if (!mysqli_stmt_prepare($stmt, $sql)){ //Проверка за гешка в заявката
+					if (!mysqli_stmt_prepare($statement, $sqlQuery)){ //Проверка за гешка в заявката
 						header("location: ../register-page.php?error=sqlError");
 						exit();
 					}
 					else {
 						$cryptedPwd = password_hash($password, PASSWORD_DEFAULT); //Криптиране на паролата
 
-						mysqli_stmt_bind_param($stmt, "sssss", $email, $firstname, $lastname, 
-						$cryptedPwd, $address); //Взима данните от потребителя и ги задава към $stmt
-						mysqli_stmt_execute($stmt); //execute $stmt to database
+						mysqli_stmt_bind_param($statement, "sssss", $email, $firstname, $lastname, 
+						$cryptedPwd, $address); //Взима данните от потребителя и ги задава към $statement
+						mysqli_stmt_execute($statement); //execute $statement to database
 						header("location: ../register-page.php?register=complete");
 						exit();
 					}
 
 				}
 			}
-			mysqli_stmt_close($stmt);
+			mysqli_stmt_close($statement);
 			mysqli_close($databaseConnect);
 
 		}

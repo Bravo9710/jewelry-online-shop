@@ -7,8 +7,23 @@
 		<div class="shell">
 			<div class="login">
 				<div class="form">
-					<form action="?" method="post">
-						
+					<form action="php/login_submit.php" method="post">
+
+						<?php
+							if(isset($_GET['error'])){
+								if($_GET['error'] == "wrngPwd" || $_GET['error'] == "noUser"){
+									echo '
+										<div class="alert alert-danger" role="alert">
+											Грешен имейл или парола!
+										</div>';
+								} else if ($_GET['error'] == "sqlError"){
+									echo '
+										<div class="alert alert-danger" role="alert">
+											Няма връзка с базата данни!
+										</div>';
+								}
+							}
+						?>
 
 						<div class="form__controls">
 							<label for="email">Email</label>
@@ -17,7 +32,7 @@
 
 						<div class="form__controls">
 							<label for="password">Password</label>
-							<input type="password" name="user_password" class="form-control" id="password" required>
+							<input type="password" name="password" class="form-control" id="password" required>
 						</div><!-- /.form__controls -->
 
 						<button type="submit" name="login-submit" class="btn">Sign In</button>
