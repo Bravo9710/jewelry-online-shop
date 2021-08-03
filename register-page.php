@@ -20,26 +20,26 @@
 								if($_GET['error'] == "emailtaken"){
 									echo '
 										<div class="alert alert-danger" role="alert">
-											Имейлът вече е зает!
+											Email is taken!
 										</div>';
 								}
 								else if ($_GET['error'] == "pwdCheck"){
 									echo '
 										<div class="alert alert-danger" role="alert">
-											Паролите не съвпадат!
+											Passwords do not match!
 										</div>';
 								}
 								else if ($_GET['error'] == "sqlError"){
 									echo '
 										<div class="alert alert-danger" role="alert">
-											Няма връзка с базата данни!
+											No connection to database!
 										</div>';
 								}
 
 							} else if (isset($_GET['register']) && $_GET['register'] == "complete"){
 								echo '
 									<div class="alert alert-danger" role="alert">
-										Успешна регистрация!
+										Registration successful!
 									</div>';
 							}
 						?>

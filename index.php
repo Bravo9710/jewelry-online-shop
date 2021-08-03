@@ -27,7 +27,7 @@
 							
 							<h2 class="category__title">Bracelets</h2><!-- /.category__title -->
 
-							<a href="#"></a>
+							<a href="bracelets.php"></a>
 						</div><!-- /.category -->
 					</li>
 					
@@ -51,7 +51,7 @@
 							
 							<h2 class="category__title">Earings</h2><!-- /.category__title -->
 
-							<a href="#"></a>
+							<a href="earings.php"></a>
 						</div><!-- /.category -->
 					</li>
 				</ul>

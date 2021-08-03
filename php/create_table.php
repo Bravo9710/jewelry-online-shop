@@ -1,7 +1,7 @@
 <?php
 	include 'database_connect.php';
 
-	$sql_query ="CREATE TABLE userss (
+	$sql_query ="CREATE TABLE users (
 		id INT(13) NOT NULL,
 		firstname VARCHAR(32) DEFAULT NULL,
 		lastname VARCHAR(30) DEFAULT NULL,
