@@ -139,6 +139,7 @@ table {
 .nav a {
 	font-weight: 700; 
 	transition: opacity .4s;
+	text-transform: capitalize; 
 }
 
 .nav p {
@@ -479,4 +480,9 @@ table {
 
 .btn-add:after {
 	transform: translate(-50%, -50%) rotate(90deg); 
+}
+
+.links {
+	display: flex; 
+	justify-content: space-between; 
 }

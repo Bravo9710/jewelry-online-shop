@@ -24,7 +24,7 @@
 							$row = mysqli_fetch_assoc($result);
 							$firstname = $row["firstname"];
 							$lastname = $row["lastname"];
-							echo '<li><p>'. $firstname. ' ' .$lastname. '</p></li>';
+							echo '<li><a href="profile.php">'. $firstname. ' ' .$lastname. '</a></li>';
 
 						} else {
 							echo '<li>
@@ -33,16 +33,18 @@
 						}
 					?>
 
-					<li>
-						<a href="signin-page.php">
-							<i class="fas fa-cart-plus"></i>
-							(0)
-						</a>
-					</li>
-
 					<?php 
 						if(isset($_SESSION['userid'])){
-							echo '<li>
+							echo 
+								'
+								<li>
+									<a href="cart.php">
+										<i class="fas fa-cart-plus"></i>
+										(0)
+									</a>
+								</li>
+
+								<li>
 									<form action="php/logout_code.php" method="POST">
 										<button type="submit" name="logout-submit" class="nav-signout">Sign out</button>
 									</form>

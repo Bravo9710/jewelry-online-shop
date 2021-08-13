@@ -7,7 +7,7 @@
 		<div class="shell">
 			<div class="login">
 				<div class="form">
-					<form action="php/login_submit.php" method="post">
+					<form action="php/admin_code.php" method="post">
 
 						<?php
 							if(isset($_GET['error'])){
@@ -26,8 +26,8 @@
 						?>
 
 						<div class="form__controls">
-							<label for="email">Email</label>
-							<input type="email" name="email" class="form-control" id="email" required>
+							<label for="admin">Admin</label>
+							<input type="name" name="admin" class="form-control" id="admin" required>
 						</div><!-- /.form__controls -->
 
 						<div class="form__controls">
@@ -35,15 +35,7 @@
 							<input type="password" name="password" class="form-control" id="password" required>
 						</div><!-- /.form__controls -->
 
-						<button type="submit" name="login-submit" class="btn">Sign In</button>
-
-						<br>
-
-						<div class="links">
-							<a href= "register-page.php">Register</a> 
-
-							<a href= "admin-login.php">Admin</a> 
-						</div><!-- /.links -->
+						<button type="submit" name="admin-submit" class="btn">Sign In</button>
 					</form>
 				</div><!-- /.form -->
 			</div><!-- /.login -->
