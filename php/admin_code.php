@@ -12,7 +12,7 @@
 			header("location: ../admin-login.php?error=sqlError");
 			exit();
 		} else {
-			mysqli_stmt_bind_param($statement, "i", $admin);
+			mysqli_stmt_bind_param($statement, "s", $admin);
 			mysqli_stmt_execute($statement);
 			$result = mysqli_stmt_get_result($statement);
 
@@ -21,19 +21,17 @@
 			//Проверка дали $result има стойности от базата данни
 			if($row){
 
-				$pwdCheck = $row['admin_password'];
+				$pwdCheck = password_verify($password, $row['admin_password']);
 				
 				if ($pwdCheck == false){
-
-					echo $pwdCheck;
 					header("location: ../admin-login.php?error=wrngPwd");
 					exit(); 
 				} else if ($pwdCheck == true){
 
 					session_start();
-					// $_SESSION['userid'] = $row['id'];
-					// $_SESSION['firstname'] = $row['firstname'];
-					// $_SESSION['lastname'] = $row['lastname'];
+					$_SESSION['userid'] = $row['id'];
+					$_SESSION['firstname'] = $row['firstname'];
+					$_SESSION['lastname'] = $row['lastname'];
 
 					header("location: ../index.php");
 					
