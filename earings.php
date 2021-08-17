@@ -16,7 +16,7 @@
 									<li>
 										<div class="product">
 											<div class="product__image">
-												<img src="' . $row["Image"] . '" alt="">
+												<img src="assets/images/' . $row["Image"] . '" alt="">
 											</div><!-- /.product__image -->
 											
 											<div class="product__body">

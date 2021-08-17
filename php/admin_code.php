@@ -48,7 +48,7 @@
 		}
 
 	} else {
-		header("location: index.php");
+		header("location: admin-page.php");
 		exit(); 
 	}
 ?>

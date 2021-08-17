@@ -1,3 +1,4 @@
+
 //Items counter
 
 let counterValue = parseInt($('.counter .counter__container').html());
@@ -18,4 +19,11 @@ $('.btn-remove').on('click', function(e) {
 	$('.counter .counter__container').html(counterValue)
 })
 
-//Items counter
+//Select handle on change
+
+$('.js-color').change(function() {
+	$value = $(this).val();
+
+	console.log($value);
+})
+

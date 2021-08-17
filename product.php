@@ -15,9 +15,14 @@
 
 							$result = mysqli_query($databaseConnect, $sqlQuery);
 								while ($row = mysqli_fetch_array($result)) {
+
+									$images = explode(", ", $row["Image"]);
+									$colors = explode(", ", $row["Colors"]);
+									$colorsLength = sizeof($colors);
+
 									echo '
 										<div class="product__image">
-											<img src="' . $row["Image"] . '" alt="">
+											<img src="assets/images/' . $images[0] . '" alt="">
 										</div>
 
 										<div class="product__content">
@@ -30,9 +35,13 @@
 													<div class="form__body">
 														<label for="color">Color</label>
 
-														<select name="" id="color">
-															<option value="">' . $row["Color_id"] . '</option>
-															<option value="">Gold</option>
+														<select class="js-color" name="color" id="color">';
+
+													for ($i = 0; $i < $colorsLength; $i++) {
+														echo '<option value="' . $colors[$i] . '">' . $colors[$i] . '</option>';
+													}
+
+													echo '
 														</select>
 
 														<div class="product__price">
