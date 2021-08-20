@@ -33,7 +33,7 @@
 					$_SESSION['firstname'] = $row['firstname'];
 					$_SESSION['lastname'] = $row['lastname'];
 
-					header("location: ../index.php");
+					header("location: ../admin-page.php");
 					
 					exit(); 
 				} else {
@@ -48,7 +48,7 @@
 		}
 
 	} else {
-		header("location: admin-page.php");
+		header("location: ../index.php");
 		exit(); 
 	}
 ?>
