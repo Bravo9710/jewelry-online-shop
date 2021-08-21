@@ -20,7 +20,7 @@
 					</li>
 
 					<li>
-						<a href="#">Log out</a>
+						<a href="php/logout_code.php">Log out</a>
 					</li>
 				</ul>
 			</nav><!-- /.nav -->

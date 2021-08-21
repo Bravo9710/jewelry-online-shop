@@ -12,11 +12,14 @@
 
 						$result = mysqli_query($databaseConnect, "SELECT * FROM products WHERE Category_id=4");
 							while ($row = mysqli_fetch_array($result)) {
+								
+								$images = explode(", ", $row["Image"]);
+
 								echo '
 									<li>
 										<div class="product">
 											<div class="product__image">
-												<img src="assets/images/' . $row["Image"] . '" alt="">
+												<img src="assets/images/' . $images[0] . '" alt="">
 											</div><!-- /.product__image -->
 											
 											<div class="product__body">

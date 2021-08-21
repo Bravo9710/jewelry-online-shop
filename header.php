@@ -16,6 +16,213 @@
 						<a href="index.php">Home</a>
 					</li>
 
+					<li class="has-dropdown">
+						<a href="index.php">
+							Products
+
+							<i class="ico-arrow"></i>
+						</a>
+
+						<div class="dropdown">
+							<div class="tabs tabs--colors js-tabs">
+								<div class="tabs__head">
+									<nav class="tabs__nav">
+										<ul>
+											<li>
+												<a href="#">Gold</a>
+											</li>
+											
+											<li>
+												<a href="#">Silver</a>
+											</li>
+										</ul>
+									</nav><!-- /.tabs__nav -->
+								</div><!-- /.tabs__head -->
+								
+								<div class="tabs__body">
+									<div class="tab is-current">
+										<div class="inner-menu">
+											<div class="tabs js-tabs">
+												<div class="tabs__head">
+													<nav class="tabs__nav">
+														<ul>
+
+															<?php
+																include 'php/database_connect.php';
+
+																$result = mysqli_query($databaseConnect, "SELECT * FROM category");
+																	while ($row = mysqli_fetch_array($result)) {
+																		echo '
+																			<li>
+																				<a href="#">' . $row["Name"] . '</a>
+																			</li>
+																		';
+																	}
+															?>
+														</ul>
+													</nav><!-- /.tabs__nav -->
+												</div><!-- /.tabs__head -->
+												
+												<div class="tabs__body">
+													<?php
+														include 'php/database_connect.php';
+
+
+														$result = mysqli_query($databaseConnect, "SELECT * FROM category");
+
+														$row = mysqli_fetch_array($result);
+
+														$index = sizeof($row);
+
+														for ($i=1; $i <= $index; $i++) { 
+
+															echo '<div class="tab '. $row['Name'] .'">
+																	<div class="products">
+																		<ul>';
+
+															$categoryProducts = mysqli_query($databaseConnect, "SELECT * FROM products WHERE Category_id=$i AND Colors LIKE '%Gold%' LIMIT 0, 4");
+
+															while ($categoryProduct = mysqli_fetch_array($categoryProducts)) { 
+																
+																if(strpos($categoryProduct["Image"], ', ') !== false) {
+																	$images = explode(', ', $categoryProduct["Image"]);
+
+																	$image = $images[0];
+																} else {
+																	$image = $categoryProduct["Image"];
+																}
+
+																echo '
+																	<li>
+																		<div class="product">
+																			<div class="product__image">
+																				<img src="assets/images/' . $image . '" alt="">
+																			</div><!-- /.product__image -->
+																			
+																			<div class="product__body">
+																				<h2 class="product__title">' . $categoryProduct["Name"] . '</h2><!-- /.product__title -->
+																				
+																				<p>' . $categoryProduct["Description"] . '</p>
+																				
+																				<span>$' . $categoryProduct["Price"] . '</span>
+																			</div><!-- /.product__body -->
+
+																			<a href="product.php?product=' . $categoryProduct["id"] . '"></a>
+																		</div><!-- /.product -->
+																	</li>
+																';
+															}
+														
+														echo '		</ul>
+																</div><!-- /.products -->
+															</div><!-- /.tab -->';
+
+														}
+													?>
+												</div><!-- /.tabs__body -->
+											</div><!-- /.tabs js-tabs -->
+										</div><!-- /.inner-menu -->
+									</div><!-- /.tab -->
+									
+									<div class="tab">
+										<div class="inner-menu">
+											<div class="tabs js-tabs">
+												<div class="tabs__head">
+													<nav class="tabs__nav">
+														<ul>
+
+															<?php
+																include 'php/database_connect.php';
+
+																$result = mysqli_query($databaseConnect, "SELECT * FROM category");
+																	while ($row = mysqli_fetch_array($result)) {
+																		echo '
+																			<li>
+																				<a href="#">' . $row["Name"] . '</a>
+																			</li>
+																		';
+																	}
+															?>
+														</ul>
+													</nav><!-- /.tabs__nav -->
+												</div><!-- /.tabs__head -->
+												
+												<div class="tabs__body">
+													<?php
+														include 'php/database_connect.php';
+
+
+														$result = mysqli_query($databaseConnect, "SELECT * FROM category");
+
+														$row = mysqli_fetch_array($result);
+
+														$index = sizeof($row);
+
+														for ($i=1; $i <= $index; $i++) { 
+
+															echo '<div class="tab '. $row['Name'] .'">
+																	<div class="products">
+																		<ul>';
+
+															$categoryProducts = mysqli_query($databaseConnect, "SELECT * FROM products WHERE Category_id=$i AND Colors LIKE '%Silver%' LIMIT 0, 4");
+
+															while ($categoryProduct = mysqli_fetch_array($categoryProducts)) { 
+																
+																if(strpos($categoryProduct["Image"], ', ') !== false) {
+																	$images = explode(', ', $categoryProduct["Image"]);
+
+																	$image = $images[1];
+																} else {
+																	$image = $categoryProduct["Image"];
+																}
+
+																echo '
+																	<li>
+																		<div class="product">
+																			<div class="product__image">
+																				<img src="assets/images/' . $image . '" alt="">
+																			</div><!-- /.product__image -->
+																			
+																			<div class="product__body">
+																				<h2 class="product__title">' . $categoryProduct["Name"] . '</h2><!-- /.product__title -->
+																				
+																				<p>' . $categoryProduct["Description"] . '</p>
+																				
+																				<span>$' . $categoryProduct["Price"] . '</span>
+																			</div><!-- /.product__body -->
+
+																			<a href="product.php?product=' . $categoryProduct["id"] . '"></a>
+																		</div><!-- /.product -->
+																	</li>
+																';
+															}
+														}
+
+														echo '		</ul>
+																</div><!-- /.products -->
+															</div><!-- /.tab -->';
+													?>
+												</div><!-- /.tabs__body -->
+											</div><!-- /.tabs js-tabs -->
+										</div><!-- /.inner-menu -->
+									</div><!-- /.tab -->
+								</div><!-- /.tabs__body -->
+							</div><!-- /.tabs js-tabs -->
+						</div><!-- /.dropdown -->
+					</li>
+
+					<li>
+						<a href="contact.php">Contact us</a>
+					</li>
+
+					<li>
+						<a href="about.php">About us</a>
+					</li>
+
+					<li>
+						<a href="services.php">Services</a>
+					</li>
+
 					<?php 
 						if(isset($_SESSION['userid'])){
 							$userid = $_SESSION['userid'];
