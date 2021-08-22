@@ -170,6 +170,7 @@ table {
 
 .dropdown {
 	position: absolute; 
+	display: none;
 	top: 100%; 
 	left: 0; 
 	right: 0; 
@@ -242,10 +243,7 @@ table {
 }
 
 .login {
-	position: absolute; 
-	top: 50%; 
-	left: 50%; 
-	transform: translate(-50%, -50%); 
+	margin: 0 auto; 
 	max-width: 500px; 
 	width: 100%; 
 	background-color: #ffa8a8; 
@@ -329,6 +327,10 @@ table {
 	width: 280px; 
 	flex: 0 0 280px; 
 	border: 1px solid #000; 
+}
+
+.hide {
+	display: none;
 }
 
 .product .product__image img {

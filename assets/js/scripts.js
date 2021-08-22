@@ -22,8 +22,6 @@ $('.btn-remove').on('click', function(e) {
 //Select handle on change
 
 $('.js-color').change(function() {
-	$value = $(this).val();
-
-	console.log($value);
+	$('.selected_image').toggleClass('hide');
 })
 

@@ -22,7 +22,14 @@
 
 									echo '
 										<div class="product__image">
-											<img src="assets/images/' . $images[0] . '" alt="">
+											<img src="assets/images/' . $images[0] . '" alt="" class="selected_image">
+											';
+											
+											if ( ! empty( $images[1] ) ) :
+												echo '	<img src="assets/images/' . $images[1] . '" alt="" class="selected_image hide">';
+											endif;
+											
+										echo '
 										</div>
 
 										<div class="product__content">
