@@ -25,3 +25,23 @@ $('.js-color').change(function() {
 	$('.selected_image').toggleClass('hide');
 })
 
+//Handle tabs
+
+$('.js-tabs').on('click', '.tabs__nav a', function(e) {
+	e.preventDefault();
+
+	const $this = $(this);
+	const tabId = $(this).attr('href');
+
+	$this
+		.parent()
+		.addClass('is-current')
+		.siblings()
+		.removeClass('is-current');
+
+	$('.js-tabs')
+		.find(tabId)
+		.addClass('is-current')
+		.siblings()
+		.removeClass('is-current');
+})

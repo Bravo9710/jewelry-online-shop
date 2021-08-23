@@ -28,21 +28,21 @@
 								<div class="tabs__head">
 									<nav class="tabs__nav">
 										<ul>
-											<li>
-												<a href="#">Gold</a>
+											<li class="is-current">
+												<a href="#gold">Gold</a>
 											</li>
 											
 											<li>
-												<a href="#">Silver</a>
+												<a href="#silver">Silver</a>
 											</li>
 										</ul>
 									</nav><!-- /.tabs__nav -->
 								</div><!-- /.tabs__head -->
 								
 								<div class="tabs__body">
-									<div class="tab is-current">
+									<div class="tab is-current" id="gold">
 										<div class="inner-menu">
-											<div class="tabs js-tabs">
+											<div class="tabs tabs--inner js-tabs">
 												<div class="tabs__head">
 													<nav class="tabs__nav">
 														<ul>
@@ -50,13 +50,23 @@
 															<?php
 																include 'php/database_connect.php';
 
-																$result = mysqli_query($databaseConnect, "SELECT * FROM category");
+																$result = mysqli_query($databaseConnect, "SELECT * FROM category ORDER BY id");
 																	while ($row = mysqli_fetch_array($result)) {
-																		echo '
-																			<li>
-																				<a href="#">' . $row["Name"] . '</a>
-																			</li>
-																		';
+																		$categoryId = $row['id'];
+															
+																		if ($categoryId == 1) {
+																			echo '
+																				<li class="is-current">
+																					<a href="#g-' . $row["Name"] . '">' . $row["Name"] . '</a>
+																				</li>
+																			';
+																		} else {
+																			echo '
+																				<li>
+																					<a href="#g-' . $row["Name"] . '">' . $row["Name"] . '</a>
+																				</li>
+																			';
+																		}
 																	}
 															?>
 														</ul>
@@ -67,20 +77,24 @@
 													<?php
 														include 'php/database_connect.php';
 
-
 														$result = mysqli_query($databaseConnect, "SELECT * FROM category");
 
-														$row = mysqli_fetch_array($result);
+														while ($row = mysqli_fetch_array($result)) { 
 
-														$index = sizeof($row);
-
-														for ($i=1; $i <= $index; $i++) { 
-
-															echo '<div class="tab '. $row['Name'] .'">
-																	<div class="products">
+															$categoryId = $row['id'];
+															
+															if ($categoryId == 1) {
+																echo '<div class="tab is-current" id="g-' . $row["Name"] . '">
+																	<div class="products products--dropdown">
 																		<ul>';
+															} else {
+																echo '<div class="tab" id="g-' . $row["Name"] . '">
+																	<div class="products products--dropdown">
+																		<ul>';
+															}
+															
 
-															$categoryProducts = mysqli_query($databaseConnect, "SELECT * FROM products WHERE Category_id=$i AND Colors LIKE '%Gold%' LIMIT 0, 4");
+															$categoryProducts = mysqli_query($databaseConnect, "SELECT * FROM products WHERE Category_id=$categoryId AND Colors LIKE '%Gold%' LIMIT 0, 4");
 
 															while ($categoryProduct = mysqli_fetch_array($categoryProducts)) { 
 																
@@ -94,15 +108,13 @@
 
 																echo '
 																	<li>
-																		<div class="product">
+																		<div class="product product--small">
 																			<div class="product__image">
 																				<img src="assets/images/' . $image . '" alt="">
 																			</div><!-- /.product__image -->
 																			
 																			<div class="product__body">
 																				<h2 class="product__title">' . $categoryProduct["Name"] . '</h2><!-- /.product__title -->
-																				
-																				<p>' . $categoryProduct["Description"] . '</p>
 																				
 																				<span>$' . $categoryProduct["Price"] . '</span>
 																			</div><!-- /.product__body -->
@@ -124,9 +136,9 @@
 										</div><!-- /.inner-menu -->
 									</div><!-- /.tab -->
 									
-									<div class="tab">
+									<div class="tab" id="silver">
 										<div class="inner-menu">
-											<div class="tabs js-tabs">
+											<div class="tabs tabs--inner js-tabs">
 												<div class="tabs__head">
 													<nav class="tabs__nav">
 														<ul>
@@ -134,13 +146,23 @@
 															<?php
 																include 'php/database_connect.php';
 
-																$result = mysqli_query($databaseConnect, "SELECT * FROM category");
+																$result = mysqli_query($databaseConnect, "SELECT * FROM category ORDER BY id");
 																	while ($row = mysqli_fetch_array($result)) {
-																		echo '
-																			<li>
-																				<a href="#">' . $row["Name"] . '</a>
-																			</li>
-																		';
+																		$categoryId = $row['id'];
+															
+																		if ($categoryId == 1) {
+																			echo '
+																				<li class="is-current">
+																					<a href="#s-' . $row["Name"] . '">' . $row["Name"] . '</a>
+																				</li>
+																			';
+																		} else {
+																			echo '
+																				<li>
+																					<a href="#s-' . $row["Name"] . '">' . $row["Name"] . '</a>
+																				</li>
+																			';
+																		}
 																	}
 															?>
 														</ul>
@@ -151,20 +173,23 @@
 													<?php
 														include 'php/database_connect.php';
 
-
 														$result = mysqli_query($databaseConnect, "SELECT * FROM category");
+														
+														while ($row = mysqli_fetch_array($result)) { 
 
-														$row = mysqli_fetch_array($result);
-
-														$index = sizeof($row);
-
-														for ($i=1; $i <= $index; $i++) { 
-
-															echo '<div class="tab '. $row['Name'] .'">
-																	<div class="products">
+															$categoryId = $row['id'];
+															
+															if ($categoryId == 1) {
+																echo '<div class="tab is-current" id="s-' . $row["Name"] . '">
+																	<div class="products products--dropdown">
 																		<ul>';
+															} else {
+																echo '<div class="tab" id="s-' . $row["Name"] . '">
+																	<div class="products products--dropdown">
+																		<ul>';
+															}
 
-															$categoryProducts = mysqli_query($databaseConnect, "SELECT * FROM products WHERE Category_id=$i AND Colors LIKE '%Silver%' LIMIT 0, 4");
+															$categoryProducts = mysqli_query($databaseConnect, "SELECT * FROM products WHERE Category_id=$categoryId AND Colors LIKE '%Silver%' LIMIT 0, 4");
 
 															while ($categoryProduct = mysqli_fetch_array($categoryProducts)) { 
 																
@@ -178,15 +203,13 @@
 
 																echo '
 																	<li>
-																		<div class="product">
+																		<div class="product product--small">
 																			<div class="product__image">
 																				<img src="assets/images/' . $image . '" alt="">
 																			</div><!-- /.product__image -->
 																			
 																			<div class="product__body">
 																				<h2 class="product__title">' . $categoryProduct["Name"] . '</h2><!-- /.product__title -->
-																				
-																				<p>' . $categoryProduct["Description"] . '</p>
 																				
 																				<span>$' . $categoryProduct["Price"] . '</span>
 																			</div><!-- /.product__body -->
@@ -196,11 +219,11 @@
 																	</li>
 																';
 															}
-														}
 
-														echo '		</ul>
-																</div><!-- /.products -->
-															</div><!-- /.tab -->';
+															echo '		</ul>
+																	</div><!-- /.products -->
+																</div><!-- /.tab -->';
+														}
 													?>
 												</div><!-- /.tabs__body -->
 											</div><!-- /.tabs js-tabs -->
