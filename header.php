@@ -17,7 +17,7 @@
 					</li>
 
 					<li class="has-dropdown">
-						<a href="index.php">
+						<a href="products.php">
 							Products
 
 							<i class="ico-arrow"></i>
@@ -50,20 +50,20 @@
 															<?php
 																include 'php/database_connect.php';
 
-																$result = mysqli_query($databaseConnect, "SELECT * FROM category ORDER BY id");
+																$result = mysqli_query($databaseConnect, "SELECT * FROM category ORDER BY category_id");
 																	while ($row = mysqli_fetch_array($result)) {
-																		$categoryId = $row['id'];
+																		$categoryId = $row['category_id'];
 															
 																		if ($categoryId == 1) {
 																			echo '
 																				<li class="is-current">
-																					<a href="#g-' . $row["Name"] . '">' . $row["Name"] . '</a>
+																					<a href="#g-' . $row["category_name"] . '">' . $row["category_name"] . '</a>
 																				</li>
 																			';
 																		} else {
 																			echo '
 																				<li>
-																					<a href="#g-' . $row["Name"] . '">' . $row["Name"] . '</a>
+																					<a href="#g-' . $row["category_name"] . '">' . $row["category_name"] . '</a>
 																				</li>
 																			';
 																		}
@@ -81,14 +81,14 @@
 
 														while ($row = mysqli_fetch_array($result)) { 
 
-															$categoryId = $row['id'];
+															$categoryId = $row['category_id'];
 															
 															if ($categoryId == 1) {
-																echo '<div class="tab is-current" id="g-' . $row["Name"] . '">
+																echo '<div class="tab is-current" id="g-' . $row["category_name"] . '">
 																	<div class="products products--dropdown">
 																		<ul>';
 															} else {
-																echo '<div class="tab" id="g-' . $row["Name"] . '">
+																echo '<div class="tab" id="g-' . $row["category_name"] . '">
 																	<div class="products products--dropdown">
 																		<ul>';
 															}
@@ -146,20 +146,20 @@
 															<?php
 																include 'php/database_connect.php';
 
-																$result = mysqli_query($databaseConnect, "SELECT * FROM category ORDER BY id");
+																$result = mysqli_query($databaseConnect, "SELECT * FROM category ORDER BY category_id");
 																	while ($row = mysqli_fetch_array($result)) {
-																		$categoryId = $row['id'];
+																		$categoryId = $row['category_id'];
 															
 																		if ($categoryId == 1) {
 																			echo '
 																				<li class="is-current">
-																					<a href="#s-' . $row["Name"] . '">' . $row["Name"] . '</a>
+																					<a href="#s-' . $row["category_name"] . '">' . $row["category_name"] . '</a>
 																				</li>
 																			';
 																		} else {
 																			echo '
 																				<li>
-																					<a href="#s-' . $row["Name"] . '">' . $row["Name"] . '</a>
+																					<a href="#s-' . $row["category_name"] . '">' . $row["category_name"] . '</a>
 																				</li>
 																			';
 																		}
@@ -177,14 +177,14 @@
 														
 														while ($row = mysqli_fetch_array($result)) { 
 
-															$categoryId = $row['id'];
+															$categoryId = $row['category_id'];
 															
 															if ($categoryId == 1) {
-																echo '<div class="tab is-current" id="s-' . $row["Name"] . '">
+																echo '<div class="tab is-current" id="s-' . $row["category_name"] . '">
 																	<div class="products products--dropdown">
 																		<ul>';
 															} else {
-																echo '<div class="tab" id="s-' . $row["Name"] . '">
+																echo '<div class="tab" id="s-' . $row["category_name"] . '">
 																	<div class="products products--dropdown">
 																		<ul>';
 															}
@@ -196,7 +196,7 @@
 																if(strpos($categoryProduct["Image"], ', ') !== false) {
 																	$images = explode(', ', $categoryProduct["Image"]);
 
-																	$image = $images[1];
+																	$image = $images[mt_rand(0,1)];
 																} else {
 																	$image = $categoryProduct["Image"];
 																}

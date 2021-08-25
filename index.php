@@ -5,57 +5,69 @@
 		<?php include 'header.php';?>
 		
 		<div class="shell">
-			<div class="categories">
-				<ul>
-					<li>
-						<div class="category">
-							<div class="category__image">
-								<img src="assets/images/necklaces main.jpg" alt="" width="1500" height="1500">
-							</div><!-- /.category__image -->
-							
-							<h2 class="category__title">Necklaces</h2><!-- /.category__title -->
+			<div class="hero">
+				<div class="hero__image">
+					<img src="assets/images/home.jpg" alt="" width="960" height="460">
+				</div><!-- /.hero__image -->
 
-							<a href="necklaces.php"></a>
-						</div><!-- /.category -->
-					</li>
-					
-					<li>
-						<div class="category">
-							<div class="category__image">
-								<img src="assets/images/bracelets main.jpg" alt="">
-							</div><!-- /.category__image -->
-							
-							<h2 class="category__title">Bracelets</h2><!-- /.category__title -->
+				<h1>Featured Products</h1>
 
-							<a href="bracelets.php"></a>
-						</div><!-- /.category -->
-					</li>
-					
-					<li>
-						<div class="category">
-							<div class="category__image">
-								<img src="assets/images/rings main.jpg" alt="">
-							</div><!-- /.category__image -->
-							
-							<h2 class="category__title">Rings</h2><!-- /.category__title -->
+				<div class="hero__body">
+					<div class="products products--home">
+						<ul>
+						<?php
+							include 'php/database_connect.php';
 
-							<a href="rings.php"></a>
-						</div><!-- /.category -->
-					</li>
-					
-					<li>
-						<div class="category">
-							<div class="category__image">
-								<img src="assets/images/earings main.jpg" alt="">
-							</div><!-- /.category__image -->
-							
-							<h2 class="category__title">Earings</h2><!-- /.category__title -->
+							$query = mysqli_query($databaseConnect, "SELECT * FROM products");
 
-							<a href="earings.php"></a>
-						</div><!-- /.category -->
-					</li>
-				</ul>
-			</div><!-- /.categories -->
+							$allProductsNumber = 0;
+
+							while ($allProducts = mysqli_fetch_array($query)) { 
+								$allProductsNumber++;
+							}
+
+							$numbers = range(1, $allProductsNumber);
+							shuffle($numbers);
+
+							$randomProducts = array_slice($numbers, 0, 4);
+
+							for ($i=0; $i < 4; $i++) { 
+
+								$query = mysqli_query($databaseConnect, "SELECT * FROM products WHERE id='$randomProducts[$i]'");
+
+								$product = mysqli_fetch_array($query);
+
+								if(strpos($product["Image"], ', ') !== false) {
+									$images = explode(', ', $product["Image"]);
+
+									$image = $images[mt_rand(0, 1)];
+								} else {
+									$image = $product["Image"];
+								}
+
+								echo '
+									<li>
+										<div class="product product--small">
+											<div class="product__image">
+												<img src="assets/images/' . $image . '" alt="">
+											</div><!-- /.product__image -->
+											
+											<div class="product__body">
+												<h2 class="product__title">' . $product["Name"] . '</h2><!-- /.product__title -->
+												
+												<span>$' . $product["Price"] . '</span>
+											</div><!-- /.product__body -->
+
+											<a href="product.php?product=' . $product["id"] . '"></a>
+										</div><!-- /.product -->
+									</li>
+								';
+							}
+						?>
+						</ul>
+					</div>
+				</div><!-- /.hero__body -->
+			</div><!-- /.hero -->
 		</div><!-- /.shell -->
 	</div><!-- /.main -->
 

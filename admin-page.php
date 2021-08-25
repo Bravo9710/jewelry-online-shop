@@ -3,20 +3,20 @@
 <body>
 	<div class="admin">
 		<div class="admin__menu">
-			<h2>Admin Menu</h2>
+			<h2><a href="admin-page.php">Admin Menu</a></h2>
 
 			<nav class="nav-admin">
 				<ul>
 					<li>
-						<a href="#">Categories</a>
+						<a href="admin-products.php">Products</a>
 					</li>
 					
 					<li>
-						<a href="#">Orders</a>
+						<a href="admin-orders.php">Orders</a>
 					</li>
 					
 					<li>
-						<a href="#">Products</a>
+						<a href="admin-categories.php">Categories</a>
 					</li>
 
 					<li>
@@ -31,8 +31,8 @@
 		?>
 
 		<div class="admin__body">
-			<h2>Home</h2>
-
+			<h2><a href="index.php">Home</a></h2>
+			
 			<div class="components">
 				<ul>
 					<li>

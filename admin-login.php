@@ -36,6 +36,10 @@
 						</div><!-- /.form__controls -->
 
 						<button type="submit" name="admin-submit" class="btn">Sign In</button>
+
+						<div class="links">
+							<a href= "signin-page.php">Sing In</a> 
+						</div><!-- /.links -->
 					</form>
 				</div><!-- /.form -->
 			</div><!-- /.login -->

@@ -45,3 +45,24 @@ $('.js-tabs').on('click', '.tabs__nav a', function(e) {
 		.siblings()
 		.removeClass('is-current');
 })
+
+$('#image-gold').change(function() {
+	fileName = $(this).val().replace(/C:\\fakepath\\/i, '')
+
+	$thisId = $(this).attr('id');
+
+	$(this).attr('value', fileName);
+
+	$(`label[for=${$thisId}]`).text(fileName);
+})
+
+
+$('#image-silver').change(function() {
+	fileName = $(this).val().replace(/C:\\fakepath\\/i, '')
+
+	$thisId = $(this).attr('id');
+
+	$(this).attr('value', fileName);
+
+	$(`label[for=${$thisId}]`).text(fileName);
+})
