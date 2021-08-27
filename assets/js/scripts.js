@@ -1,12 +1,12 @@
 
 //Items counter
 
-let counterValue = parseInt($('.counter .counter__container').html());
+let counterValue = parseInt($('.counter .counter__container').val());
 
 $('.btn-add').on('click', function(e) {
 	counterValue++;
 
-	$('.counter .counter__container').html(counterValue)
+	$('.counter .counter__container').val(counterValue)
 })
 
 $('.btn-remove').on('click', function(e) {
@@ -16,7 +16,7 @@ $('.btn-remove').on('click', function(e) {
 		counterValue--;
 	}
 
-	$('.counter .counter__container').html(counterValue)
+	$('.counter .counter__container').val(counterValue)
 })
 
 //Select handle on change

@@ -1,18 +1,4 @@
-<div style="width: 100%">
-	<iframe 
-		width="100%" 
-		height="600" 
-		frameborder="0" 
-		scrolling="no" 
-		marginheight="0" 
-		marginwidth="0" 
-		src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=1%20Grafton%20Street,%20Dublin,%20Ireland+(My%20Business%20Name)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
-	</iframe>
-	
-	<a href="https://www.maps.ie/draw-radius-circle-map/">
-		Measure km radius
-	</a>
-</div>
+
 <?php include 'head.php';?>
 
 <body>
@@ -20,57 +6,47 @@
 		<?php include 'header.php';?>
 		
 		<div class="shell">
-			<div class="categories">
-				<ul>
-					<li>
-						<div class="category">
-							<div class="category__image">
-								<img src="assets/images/necklaces main.jpg" alt="" width="1500" height="1500">
-							</div><!-- /.category__image -->
-							
-							<h2 class="category__title">Necklaces</h2><!-- /.category__title -->
+			<div class="inner">
+				<div class="inner__body">
+					<div class="contact">
+						<h2>Email:</h2>
 
-							<a href="necklaces.php"></a>
-						</div><!-- /.category -->
-					</li>
-					
-					<li>
-						<div class="category">
-							<div class="category__image">
-								<img src="assets/images/bracelets main.jpg" alt="">
-							</div><!-- /.category__image -->
-							
-							<h2 class="category__title">Bracelets</h2><!-- /.category__title -->
+						<a href="mailto:dani.1998@abv.bg">dani.1998@abv.bg</a>
+					</div><!-- /.contact -->
 
-							<a href="bracelets.php"></a>
-						</div><!-- /.category -->
-					</li>
-					
-					<li>
-						<div class="category">
-							<div class="category__image">
-								<img src="assets/images/rings main.jpg" alt="">
-							</div><!-- /.category__image -->
-							
-							<h2 class="category__title">Rings</h2><!-- /.category__title -->
+					<div class="contact">
+						<h2>Phone:</h2>
 
-							<a href="rings.php"></a>
-						</div><!-- /.category -->
-					</li>
-					
-					<li>
-						<div class="category">
-							<div class="category__image">
-								<img src="assets/images/earings main.jpg" alt="">
-							</div><!-- /.category__image -->
-							
-							<h2 class="category__title">Earings</h2><!-- /.category__title -->
+						<a href="tel:+359893559226">+359 893 55 9226</a>
+					</div><!-- /.contact -->
 
-							<a href="earings.php"></a>
-						</div><!-- /.category -->
-					</li>
-				</ul>
-			</div><!-- /.categories -->
+					<div class="socials">
+						<ul>
+							<li>
+								<a href="#">
+									<img src="assets/images/facebook-brands.svg" alt="">
+								</a>
+							</li>
+							
+							<li>
+								<a href="#">
+									<img src="assets/images/facebook-messenger-brands.svg" alt="">
+								</a>
+							</li>
+
+							<li>
+								<a href="#">
+									<img src="assets/images/twitter-brands.svg" alt="">
+								</a>
+							</li>
+						</ul>
+					</div><!-- /.socials -->
+				</div><!-- /.inner__body -->
+
+				<div class="map">
+					<div style="width: 100%"><iframe width="100%" height="600" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=Varna+(My%20Business%20Name)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe></div>
+				</div><!-- /.map -->
+			</div><!-- /.inner -->
 		</div><!-- /.shell -->
 	</div><!-- /.main -->
 

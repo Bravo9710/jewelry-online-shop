@@ -450,7 +450,7 @@ table {
 
 .product-full .product__content {
 	flex: 0 0 50%;
-	padding: 40px; 
+	padding: 40px 40px 70px; 
 	position: relative; 
 }
 
@@ -599,10 +599,26 @@ table {
 	position: absolute; 
 	left: 40px; 
 	bottom: 0; 
-	width: 171px; 
+	width: 210px; 
 	display: flex; 
 	justify-content: space-between; 
 	align-items: center; 
+}
+
+.counter__container {
+	appearance: none; 
+	font-size: 23px; 
+	font-weight: 700; 
+	min-width: 30px; 
+	border: none; 
+	margin: 0; 
+	text-align: center; 
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
 }
 
 .counter p {
@@ -615,6 +631,7 @@ table {
 .btn-add {
 	width: 54px; 
 	height: 54px; 
+	flex: 0 0 33.33%;
 	display: inline-block; 
 	background-color: #000; 
 	position: relative; 
@@ -946,3 +963,106 @@ td img {
 	font-size: 30px; 
 	font-weight: 700; 
 }
+
+.inner {
+	display: flex; 
+	justify-content: flex-end; 
+}
+
+.inner__body {
+	padding-top: 100px; 
+	padding-right: 180px; 
+}
+
+.map {
+	width: 50%; 
+	border: 1px solid #000; 
+	height: 602px; 
+}
+
+.contact {
+	margin-bottom: 20px; 
+}
+
+.contact h2 {
+	font-weight: 700; 
+	font-size: 20px; 
+	margin-bottom: 10px; 
+}
+
+.socials ul {
+	display: flex; 
+	list-style: none; 
+}
+
+.socials li + li {
+	margin-left: 20px; 
+}
+
+.socials img {
+	width: 33px; 
+	height: 33px; 
+}
+
+.about h2 {
+	font-size: 30px; 
+	font-weight: 700; 
+	text-align: center; 
+	margin-bottom: 20px; 
+}
+
+.about__image,
+.about__text {
+	max-width: 700px; 
+	margin: 0 auto; 
+}
+
+.about__image img {
+	width: 100%; 
+	height: 100%; 
+	object-fit: cover;
+}
+
+.about__text p {
+	margin-bottom: 20px; 
+}
+
+.orders {
+	background-color: red; 
+	max-width: 780px; 
+	height: 500px; 
+	margin: 0 auto; 
+}
+
+.tabs--profile {
+	display: flex; 
+}
+
+.tabs--profile .tabs__head {
+	flex: 0 0 25%;
+}
+
+.tabs--profile .tabs__body {
+	flex: 0 0 75%;
+}
+
+.tabs--profile .tabs__nav ul {
+	flex-direction: column; 
+} 
+
+.tabs--profile .tabs__nav li {
+	border-bottom: 1px solid #ffa8a8; 
+	padding-bottom: 7px; 
+}
+
+.tabs--profile .tabs__nav li + li {
+	margin-top: 20px; 
+}
+
+.tabs--profile .tabs__nav a {
+	text-align: center; 
+	padding: 5px 10px; 
+	font-size: 20px; 
+	display: block; 
+} 
+

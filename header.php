@@ -248,7 +248,9 @@
 
 					<?php 
 						if(isset($_SESSION['userid'])){
+
 							$userid = $_SESSION['userid'];
+
 							$sqlQuery ="SELECT firstname, lastname FROM users WHERE id='$userid'";
 							$result = mysqli_query($databaseConnect, $sqlQuery);
 							$row = mysqli_fetch_assoc($result);
@@ -270,7 +272,7 @@
 								<li>
 									<a href="cart.php">
 										<i class="fas fa-cart-plus"></i>
-										(0)
+										('. count($_SESSION['cart']) .')
 									</a>
 								</li>
 
@@ -285,4 +287,6 @@
 			</nav><!-- /.nav -->
 		</div><!-- /.header__inner -->
 	</div><!-- /.shell -->
+
+	<?php print_r($_SESSION['cart']) ?>
 </header><!-- /.header -->

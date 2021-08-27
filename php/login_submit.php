@@ -33,6 +33,9 @@
 					$_SESSION['firstname'] = $row['firstname'];
 					$_SESSION['lastname'] = $row['lastname'];
 
+					$cart = [];
+					$_SESSION['cart'] = $cart;
+
 					header("location: ../index.php");
 					
 					exit(); 

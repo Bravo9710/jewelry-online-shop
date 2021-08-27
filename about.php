@@ -5,57 +5,19 @@
 		<?php include 'header.php';?>
 		
 		<div class="shell">
-			<div class="categories">
-				<ul>
-					<li>
-						<div class="category">
-							<div class="category__image">
-								<img src="assets/images/necklaces main.jpg" alt="" width="1500" height="1500">
-							</div><!-- /.category__image -->
-							
-							<h2 class="category__title">Necklaces</h2><!-- /.category__title -->
+			<div class="about">
+				<h2>About us</h2>
 
-							<a href="necklaces.php"></a>
-						</div><!-- /.category -->
-					</li>
-					
-					<li>
-						<div class="category">
-							<div class="category__image">
-								<img src="assets/images/bracelets main.jpg" alt="">
-							</div><!-- /.category__image -->
-							
-							<h2 class="category__title">Bracelets</h2><!-- /.category__title -->
+				<div class="about__text">
+					<p>Online Jewellery Shop designs, manufactures and markets hand-finished and contemporary jewellery made from high-quality materials at affordable prices. Our jewellery is sold in more than 100 countries on six continents through more than 7,700 points of sale, including more than 2,600 concept stores.</p>
 
-							<a href="bracelets.php"></a>
-						</div><!-- /.category -->
-					</li>
-					
-					<li>
-						<div class="category">
-							<div class="category__image">
-								<img src="assets/images/rings main.jpg" alt="">
-							</div><!-- /.category__image -->
-							
-							<h2 class="category__title">Rings</h2><!-- /.category__title -->
+					<p>Founded in 2021 and headquartered in Varna, Bulgaria, We employ more than 27,700 people worldwide of whom more than 14,000 are located in Bulgaria, where the Company manufactures its jewellery. Our jewellery is 'touched by a thousand thumbs' before it makes its way to you. Skilled gem cutters in Plovdiv, master craftsmen in Sofia and our very own design team in Varna inject their unique artistry to make every piece unique. Art, architecture and the world around us constantly inspire us, as do our customers. We love seeing how you mix, match, stack and layer your favourite pieces.</p>
+				</div><!-- /.about__text -->
 
-							<a href="rings.php"></a>
-						</div><!-- /.category -->
-					</li>
-					
-					<li>
-						<div class="category">
-							<div class="category__image">
-								<img src="assets/images/earings main.jpg" alt="">
-							</div><!-- /.category__image -->
-							
-							<h2 class="category__title">Earings</h2><!-- /.category__title -->
-
-							<a href="earings.php"></a>
-						</div><!-- /.category -->
-					</li>
-				</ul>
-			</div><!-- /.categories -->
+				<div class="about__image">
+					<img src="assets/images/about.jpg" alt="">
+				</div><!-- /.about__image -->
+			</div><!-- /.about -->
 		</div><!-- /.shell -->
 	</div><!-- /.main -->
 
