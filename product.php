@@ -10,8 +10,6 @@
 					<?php
 						include 'php/database_connect.php';
 
-
-
 						$product_id = $_GET['product'];
 						$sqlQuery = 'SELECT * FROM products WHERE id='.$product_id;
 

@@ -66,3 +66,12 @@ $('#image-silver').change(function() {
 
 	$(`label[for=${$thisId}]`).text(fileName);
 })
+
+// handle empty cart
+
+$(window).on('load', () => {
+	if($('.products-list ul').children().length <= 1) {
+		$('.form-order .form__actions').hide();
+		$('.total-price').hide();
+	}
+})

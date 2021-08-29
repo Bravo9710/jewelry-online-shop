@@ -266,13 +266,19 @@
 					?>
 
 					<?php 
+						$count = 0;
+
 						if(isset($_SESSION['userid'])){
+							for ($i=0; $i < count($_SESSION['cart']); $i++) { 
+								$count += $_SESSION['cart'][$i]['count'];
+							}
+
 							echo 
 								'
 								<li>
 									<a href="cart.php">
 										<i class="fas fa-cart-plus"></i>
-										('. count($_SESSION['cart']) .')
+										('. $count .')
 									</a>
 								</li>
 
@@ -287,6 +293,4 @@
 			</nav><!-- /.nav -->
 		</div><!-- /.header__inner -->
 	</div><!-- /.shell -->
-
-	<?php print_r($_SESSION['cart']) ?>
 </header><!-- /.header -->

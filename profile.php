@@ -24,9 +24,66 @@
 					<div class="tab is-current" id="orders">
 						<div class="orders">
 							<ul>
-								<li>
-									<div class="order"></div><!-- /.order -->
-								</li>
+								<?php
+									include 'php/database_connect.php';
+									$userId = $_SESSION['userid'];
+
+									$sqlQuery = 'SELECT * FROM orders WHERE user_id='.$userId;
+									
+									$orders = [];
+									
+									$result = mysqli_query($databaseConnect, $sqlQuery);
+									while ($row = mysqli_fetch_array($result)) {
+										array_push($orders, $row["order_id"]);
+									}
+
+									$ordersFiltered = array_values(array_unique($orders));
+
+									$totalProducts = 0;
+									$totalPrice = 0;
+
+									for ($i=0; $i < count($ordersFiltered); $i++) { 
+										$sqlQuery = 
+											'SELECT 
+												orders.order_id,
+												orders.count,
+												orders.status, 
+												products.price 
+											FROM orders JOIN products ON 
+												orders.purchase_item_id = products.id 
+											WHERE
+												order_id='.$ordersFiltered[$i];
+
+										$result = mysqli_query($databaseConnect, $sqlQuery);
+
+										while($row = mysqli_fetch_array($result)) {
+											$totalPrice += $row["count"]*$row["price"];
+											$totalProducts += $row["count"];
+											$orderId = $row['order_id'];
+											$orderStatus = $row['status'];
+										}
+
+										echo '<li>
+													<div class="order">
+														<div class="order__id">Order ID: #'.$orderId.'</div><!-- /.order__id -->
+
+														<div class="order__body">
+															<div class="order__status">Status: '.$orderStatus.'</div><!-- /.order__products -->
+															
+															<div class="order__products">Total products: '.$totalProducts.'</div><!-- /.order__products -->
+
+															<div class="order__total">Total price: $'.$totalPrice.'</div><!-- /.order__total -->
+														</div><!-- /.order__body -->
+
+														<a href="order.php?orderID='.$orderId.'" class="order__link"></a>
+													</div><!-- /.order -->
+												</li>';
+
+										$totalProducts = 0;
+										$totalPrice = 0;
+									}
+								?>
+
 							</ul>
 						</div><!-- /.orders -->
 					</div><!-- /.tab -->

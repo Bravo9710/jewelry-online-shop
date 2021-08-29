@@ -176,9 +176,7 @@
 								} else {
 									$image = $row["Image"];
 								}
-
 								
-
 								echo '
 									<tr>
 										<td>'.$num.'</td>

@@ -1,26 +1,20 @@
 <?php
 	include 'database_connect.php';
 
-	if(isset($_POST['add-to-cart'])) {
+	session_start();
 
-		$productId = $_POST['product'];
-		$productColor = $_POST['color']; 
-		$count = $_POST['counter']; 
+	if (isset($_SESSION['userid'])) {
+		if(isset($_POST['add-to-cart'])) {
 
-		$newProduct = array('product_id' => $productId, 'count' => $count, 'product_color' => $productColor);
-		// var_dump($newProduct);
+			$productId = $_POST['product'];
+			$productColor = $_POST['color']; 
+			$count = $_POST['counter']; 
 
-		session_start();
-		
-		if( empty( $_SESSION['cart'] ) ) {
-			$_SESSION['cart'] = array();
-		}
-
-		// array_push($_SESSION['cart'], $newProduct);
-
+			$newProduct = array('product_id' => $productId, 'count' => $count, 'product_color' => $productColor);
 	
-			echo 'before for: '.count($_SESSION['cart']);
-			echo '<br>';
+			if( empty( $_SESSION['cart'] ) ) {
+				$_SESSION['cart'] = array();
+			}
 
 			$product_ids = array();
 			if ( ! empty( $_SESSION['cart'] ) ) {
@@ -29,7 +23,6 @@
 				}
 
 			}
-			var_dump($newProduct);
 
 			if( array_search($newProduct['product_id'], $product_ids ) === false ) {
 				array_push($_SESSION['cart'], $newProduct);
@@ -38,35 +31,20 @@
 				for ($i=0; $i < count($_SESSION['cart']); $i++) { 
 					if( $newProduct['product_id'] === $_SESSION['cart'][$i]['product_id'] ) {
 						if ( $newProduct['product_color'] === $_SESSION['cart'][$i]['product_color'] ) {
-							echo '<br>count: '.$_SESSION['cart'][$i]['count'];
 							$_SESSION['cart'][$i]['count'] += $newProduct['count'];
 							$is_new = false;
 							break;
 						} 
-						echo '<br>'.array_search($newProduct['product_id'], $_SESSION['cart'][$i]);
 					} 
 				}
 
 				if ( $is_new ) {
 					array_push($_SESSION['cart'], $newProduct);
 				}
-
-				echo '<br>new id: '.$newProduct['product_id'];
-				echo '<br>old id: '.$_SESSION['cart'][$i]['product_id'];
 			}
-				echo '<br>new id: '.$newProduct['product_id'];
-				print_r($_SESSION['cart']);
-			
 		}
-//	}
-	// header("location: ../product.php?product=$productId");
+		header("location: ../product.php?product=$productId");
+	} else {
+		header("location: ../signin-page.php");
+	}
 ?>
-<!-- 
-
-if($newProduct['product_id'] == $_SESSION['cart'][$i]['product_id']) {
-					// echo '<br>new color: '.$newProduct['product_color'];
-					// echo '<br>old color: '.$_SESSION['cart'][$i]['product_color'];
-
-					if($newProduct['product_color'] == $_SESSION['cart'][$i]['product_color']) {
-						// echo '<br>new count: '.$newProduct['count'];
-						// echo '<br>old count: '.$_SESSION['cart'][$i]['count']; -->
