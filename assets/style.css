@@ -1196,3 +1196,12 @@ li.empty-cart:only-child {
 	right: 0;
 	bottom: 0;
 }
+
+.form--status .form__controls {
+	width: 100%; 
+}
+
+.form--status button {
+	margin: 0; 
+	width: 100%; 
+}

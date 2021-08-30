@@ -83,7 +83,6 @@
 										$totalPrice = 0;
 									}
 								?>
-
 							</ul>
 						</div><!-- /.orders -->
 					</div><!-- /.tab -->

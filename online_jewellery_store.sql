@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Хост: 127.0.0.1
--- Време на генериране: 19 авг 2021 в 17:24
--- Версия на сървъра: 10.4.19-MariaDB
--- Версия на PHP: 8.0.7
+-- Host: 127.0.0.1
+-- Generation Time: 30 авг 2021 в 20:41
+-- Версия на сървъра: 10.4.13-MariaDB
+-- PHP Version: 7.4.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- База данни: `online_jewellery_store`
+-- Database: `online_jewellery_store`
 --
 
 -- --------------------------------------------------------
@@ -42,19 +42,33 @@ INSERT INTO `admin` (`admin`, `admin_password`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Структура на таблица `cart`
+--
+
+CREATE TABLE `cart` (
+  `id` int(10) NOT NULL,
+  `user_id` int(10) NOT NULL,
+  `product_id` int(10) NOT NULL,
+  `count` int(5) NOT NULL,
+  `product_color` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Структура на таблица `category`
 --
 
 CREATE TABLE `category` (
-  `id` int(5) NOT NULL,
-  `Name` varchar(50) NOT NULL
+  `category_id` int(5) NOT NULL,
+  `category_name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Схема на данните от таблица `category`
 --
 
-INSERT INTO `category` (`id`, `Name`) VALUES
+INSERT INTO `category` (`category_id`, `category_name`) VALUES
 (3, 'Bracelets'),
 (4, 'Earings'),
 (1, 'Necklaces'),
@@ -67,11 +81,31 @@ INSERT INTO `category` (`id`, `Name`) VALUES
 --
 
 CREATE TABLE `orders` (
-  `id` int(5) NOT NULL,
+  `order_id` int(5) NOT NULL,
   `user_id` int(5) NOT NULL,
   `purchase_item_id` int(5) NOT NULL,
+  `purchase_item_color` varchar(50) NOT NULL,
+  `count` int(10) NOT NULL,
   `status` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Схема на данните от таблица `orders`
+--
+
+INSERT INTO `orders` (`order_id`, `user_id`, `purchase_item_id`, `purchase_item_color`, `count`, `status`) VALUES
+(1, 11, 2, 'Gold', 1, 'canceled'),
+(1, 11, 5, 'Gold', 1, 'canceled'),
+(1, 11, 11, 'Gold', 3, 'canceled'),
+(2, 11, 2, 'Gold', 1, 'canceled'),
+(2, 11, 12, 'Gold', 1, 'canceled'),
+(3, 11, 2, 'Gold', 2, 'ordered'),
+(4, 13, 15, 'Gold', 1, 'canceled'),
+(5, 13, 15, 'Silver', 1, 'canceled'),
+(5, 13, 15, 'Gold', 1, 'canceled'),
+(5, 13, 5, 'Gold', 1, 'canceled'),
+(5, 13, 13, 'Gold', 1, 'canceled'),
+(5, 13, 13, 'Silver', 1, 'canceled');
 
 -- --------------------------------------------------------
 
@@ -94,7 +128,7 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `Name`, `Category_id`, `Price`, `Colors`, `Image`, `Description`) VALUES
-(1, 'Alta Textured Chain Necklace', 1, 38, 'Gold, Silver', 'necklace 1-gold.jpg, necklace 1-silver', 'An everyday chain textured to catch the light. Wear alone or stack up with your favourites. 49 solid links, adjustable up to 45cm'),
+(1, 'Alta Textured Chain Necklace', 1, 38, 'Gold, Silver', 'necklace 1-gold.jpg, necklace 1-silver.jpg', 'An everyday chain textured to catch the light. Wear alone or stack up with your favourites. 49 solid links, adjustable up to 45cm'),
 (2, 'Nura Pearl Triple Beaded Necklace', 1, 48, 'Gold', 'necklace 2-gold.jpg', 'A Triple Beaded Necklace, where you can change the pearl everyday. Adjustable to 40cm'),
 (3, 'Ziggy Mini Petal Necklace', 1, 50, 'Silver', 'necklace 3-silver.jpg', 'An HQ favourite. Plus you can personalise with an engraving.'),
 (4, 'Alta Pearl Necklace', 1, 49, 'Gold', 'necklace 4-gold.jpg', 'One of our bestsellers. 18ct gold-plated'),
@@ -114,18 +148,6 @@ INSERT INTO `products` (`id`, `Name`, `Category_id`, `Price`, `Colors`, `Image`,
 (18, 'Siren Mini Nugget Hoop Earrings', 4, 99, 'Gold, Silver', 'earings 2-gold.jpg, earings 2-silver.jpg', 'One of our best selling gemstones (and it isn\'t hard to see why). Hand cut gemstones mean these huggies are slightly different each time, but gorgeous 100 percent of the time. Wear alone or add to a stack.'),
 (19, 'Corda Huggie Earrings', 4, 59, 'Gold, Silver', 'earings 3-gold.jpg, earings 3-silver.jpg', 'Inspired by ropes, our textured Corda Huggie Earrings are the perfect way to add a twist to your ear stack.'),
 (20, 'Siren Muse Mini Drop Huggie Earrings', 4, 79, 'Gold, Silver', 'earings 4-gold.jpg, earings 4-silver.jpg', 'Newness for your ear stack. A delicate drop huggie with subtly hammered surfaces that radiate light. This is Siren Muse.');
-
--- --------------------------------------------------------
-
---
--- Структура на таблица `purchase_item`
---
-
-CREATE TABLE `purchase_item` (
-  `id` int(5) NOT NULL,
-  `product_id` int(5) NOT NULL,
-  `count` int(5) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -150,36 +172,42 @@ INSERT INTO `users` (`id`, `firstname`, `lastname`, `email`, `password`, `addres
 (1, 'Венцислав Венков', 'asd', 'wenci_97_08@abv.bg', '$2y$10$WWWZTSoyg10RR7HEKyb9LeY', 'В. Левски 11'),
 (9, 'Yordan', 'Enchev', 'dani.1998@abv.bg', '$2y$10$HZX8Jtgn/cuvK/xXHheIFOniz1Tbk2kFqyRsv3vcMIPpdyZ.9pMVu', 'ul. \"Chaika\" 2'),
 (10, 'Encho', 'Enchev', 'encho.enchev@abv.bg', '$2y$10$1J4uywtRKwzQ6dv4vWWmMuWJK4s6rh//ljHtNNJ/MBBvDgXzPYFmK', 'ul. \"Chaika\" 2'),
-(11, 'asds', 'asds', 'asd@asd', '$2y$10$tjLPvbY08WqeZKXUdHwzJelltxPlJWtL2pp7ixn8yNHi7PSclw4Ea', 'asd'),
-(12, '111', '111', '111@asd', '$2y$10$1xV8PqHRJRS1BTrYZCrbXOcYAnTyfwO1SRSlD1mceYv4V0iM6cJGe', '111');
+(11, 'asdss', 'asdss', 'asd@asd', '$2y$10$gipWImR1Nt7M5s/Fw6XXmOnqslfGo0A9G78pk93f17Tns2/XM3Gdy', 'asd'),
+(12, '111', '111', '111@asd', '$2y$10$1xV8PqHRJRS1BTrYZCrbXOcYAnTyfwO1SRSlD1mceYv4V0iM6cJGe', '111'),
+(13, 'asd', 'asd', 'asd1@asd', '$2y$10$rt5yKon3w02uJA41drIAKeiAQf513vNV7yAOi2Sh8NH33CQODjzVe', 'asd');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Индекси за таблица `admin`
+-- Indexes for table `admin`
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`admin`);
 
 --
--- Индекси за таблица `category`
+-- Indexes for table `cart`
+--
+ALTER TABLE `cart`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `product_id` (`user_id`);
+
+--
+-- Indexes for table `category`
 --
 ALTER TABLE `category`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `Name` (`Name`);
+  ADD PRIMARY KEY (`category_id`),
+  ADD UNIQUE KEY `Name` (`category_name`);
 
 --
--- Индекси за таблица `orders`
+-- Indexes for table `orders`
 --
 ALTER TABLE `orders`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `user_id` (`user_id`),
-  ADD UNIQUE KEY `purchase_item_id` (`purchase_item_id`);
+  ADD KEY `order_id` (`order_id`);
 
 --
--- Индекси за таблица `products`
+-- Indexes for table `products`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`),
@@ -187,14 +215,7 @@ ALTER TABLE `products`
   ADD KEY `Category_id` (`Category_id`);
 
 --
--- Индекси за таблица `purchase_item`
---
-ALTER TABLE `purchase_item`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `product_id` (`product_id`);
-
---
--- Индекси за таблица `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
@@ -204,28 +225,28 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT for table `orders`
+-- AUTO_INCREMENT for table `cart`
 --
-ALTER TABLE `orders`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `cart`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `category`
+--
+ALTER TABLE `category`
+  MODIFY `category_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(13) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
-
---
--- AUTO_INCREMENT for table `purchase_item`
---
-ALTER TABLE `purchase_item`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(13) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(13) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(13) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Ограничения за дъмпнати таблици
@@ -235,7 +256,7 @@ ALTER TABLE `users`
 -- Ограничения за таблица `products`
 --
 ALTER TABLE `products`
-  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`Category_id`) REFERENCES `category` (`id`);
+  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`Category_id`) REFERENCES `category` (`category_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

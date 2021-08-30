@@ -27,7 +27,7 @@
 		</div><!-- /.admin__menu -->
 
 		<div class="admin__body">
-			<h2>Products</h2>
+			<h2>Categories</h2>
 
 			<?php 
 				if(isset($_GET['deleteCategory'])){
